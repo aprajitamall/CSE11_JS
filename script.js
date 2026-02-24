@@ -24,7 +24,7 @@ var animals=new Array("cat","dog","lion");
 var person={
     name:"aprajita mall",
     age:19,
-    tilte:"student of CSE11"
+    tilte:"student of CSE11",
 }
 const sym1=Symbol(4)
 console.log(sym1);
