@@ -1,2 +1,40 @@
-console.log("Hello World");
-document.write("Hello World");
+/*console.log("Hello World");
+document.write("Hello World");*/
+
+var num=10;
+console.log(num);
+console.log(typeof(num));
+num=false;
+console.log(typeof(num));
+num="Aprajita mall";
+console.log(num);
+console.log(typeof(num));
+num=null;
+console.log(num);
+console.log(typeof(num));
+num=undefined;
+console.log(num);
+console.log(typeof(num));
+//function
+var sayHello=function(){
+    alert("hello world")
+}
+//array
+var numberArray=[1,2,3];
+var animals=new Array("cat","dog","lion");
+//object
+var person={
+    name:"aprajita mall",
+    age:19,
+    tilte:"student of CSE11"
+}
+const sym1=Symbol(4)
+console.log(sym1);
+const sym2=Symbol(4);
+console.log(sym2);
+if(sym1==sym2){
+ console.log("true");  
+
+}else{
+    console.log("false");  
+}
