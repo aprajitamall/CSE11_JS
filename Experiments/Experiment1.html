@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 1</title>
+    <style>
+    body{
+        background-color: #e295e3;
+    }
+    .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    border:2px solid black;
+    text-align: center;
+    background-color: rgb(254, 204, 253);
+    }
+    .container  input{
+    width: 250px;
+    height:30px ; 
+    }
+
+    .container button{
+    
+        font-size: 20px;
+        font-weight: bold;
+        background-color: rgb(158, 72, 175);
+    }
+    .container button:hover {
+    background-color:#fafa8f; 
+}
+    </style>
+</head>
+<body>
+ <div class="container" >  
+ <h1>Grade Calculater</h1>
+ <h2>Enter the number of Subject</h2>
+ <form action="#">
+    <input type="number" id="subjects"><br><br>
+ </form>
+ 
+  <button onclick="calculateResult()">Calculate Result</button>
+  <div id="result"></div>
+  </div>
+  <script src="experiment1.js"></script>
+</body>
+</html>
