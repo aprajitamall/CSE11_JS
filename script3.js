@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // var count;
 // document.write("Starting loop"+"<br/>");
 // for(count=0; count<10;count++)
@@ -5,6 +6,8 @@
 //     document.write("current count:" +count);
 //     document.write("<br/>");
 // }
+=======
+>>>>>>> 10729cb208830a19dc06d4fb368d23d814a89aab
 const person={
     fname:"Aprajita",
     lname:"Mall",
