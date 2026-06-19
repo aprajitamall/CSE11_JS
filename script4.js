@@ -1,15 +1,11 @@
-var myinfo=new Array();
-var myinfo1=Array();
-
-console.log(myinfo,myinfo1)
-var collectin { 
-new String("abc"),
-new Date(),
-};
+let collection = [
+{}, [], true, "john", function () {}, 90009898193, undefined, null, new String("abc"), new Date(), ];
 console.log(collection);
-var trainerinfo=["jitendra",29,"ghaziabad"]
-console.log(trainerinfo.length);
-//add element
-trainerinfo contact=8765161658;
-console.log(trainerinfo);
+collection.teacherName = "John Mac";
+collection.phoneNo = 950008193;
 
+var trainerinfo = ["Jitendra" , 29, "Ghaziabad", {isMarried:true}];
+console.log(trainerinfo);
+console.log(trainerinfo[0]);
+console.log(trainerinfo[1]);
+console.log(trainerinfo[2]);

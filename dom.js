@@ -1,7 +1,7 @@
 const result = document.getElementById("para");
 result.innerHTML= "Hello world";
 result.tittle = "my name";
-//document.write(result);
+// document.write(result);
 const x=document.getElementsByClassName("p1");
  console.log(x);
  x[0].innerHTML="Arajita";

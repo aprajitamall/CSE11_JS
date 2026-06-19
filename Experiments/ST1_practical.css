@@ -1,0 +1,33 @@
+
+    body{
+        background-color:white;
+        display: flex;
+        justify-content: center;
+    }
+    .container{
+    width: 500px;
+    height: auto;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    border:2px solid skyblue;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgb(171, 237, 252);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.7);
+    }
+    .container  input{
+    width: 250px;
+    height:30px ; 
+    }
+
+    .container button{
+    
+        font-size: 20px;
+        font-weight: bold;
+        background-color: rgb(72, 154, 175);
+    }
+    .container button:hover {
+    background-color:#fc9fd2; 
+}
+    

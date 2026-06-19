@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amazon Clone Advanced</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#e3e6e6;
+}
+
+/* HEADER */
+
+.header{
+    background:#131921;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    width:120px;
+}
+
+.location{
+    font-size:14px;
+}
+
+.searchbar{
+    width:50%;
+    display:flex;
+}
+
+.searchbar select{
+    padding:10px;
+    border:none;
+}
+
+.searchbar input{
+    width:100%;
+    padding:10px;
+    border:none;
+    outline:none;
+}
+
+.searchbar button{
+    background:#febd69;
+    border:none;
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+.right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.cart{
+    position:relative;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.cart span{
+    position:absolute;
+    top:-10px;
+    right:-12px;
+    background:red;
+    color:white;
+    border-radius:50%;
+    padding:2px 7px;
+    font-size:12px;
+}
+
+.darkbtn{
+    padding:8px 15px;
+    border:none;
+    border-radius:20px;
+    background:#febd69;
+    cursor:pointer;
+}
+
+/* NAVBAR */
+
+.navbar{
+    background:#232f3e;
+    color:white;
+    display:flex;
+    gap:20px;
+    padding:12px;
+    overflow-x:auto;
+}
+
+.navbar p{
+    cursor:pointer;
+}
+
+/* SLIDER */
+
+.slider{
+    width:100%;
+    height:450px;
+    overflow:hidden;
+}
+
+.slider img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* SECTION */
+
+.section-title{
+    padding:20px;
+    font-size:28px;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 15px gray;
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.rating{
+    color:orange;
+}
+
+.price{
+    color:#b12704;
+    font-size:24px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.oldprice{
+    text-decoration:line-through;
+    color:gray;
+    font-size:14px;
+}
+
+.offer{
+    background:red;
+    color:white;
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:4px;
+    margin-bottom:10px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:20px;
+    background:#ffd814;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:orange;
+}
+
+/* BANNER */
+
+.offer-banner{
+    margin:20px;
+    background:linear-gradient(to right,#232f3e,#37475a);
+    color:white;
+    padding:40px;
+    border-radius:10px;
+    text-align:center;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.service-box{
+    background:white;
+    text-align:center;
+    padding:25px;
+    border-radius:10px;
+}
+
+.service-box h3{
+    margin:10px 0;
+}
+
+/* FOOTER */
+
+.footer{
+    background:#131921;
+    color:white;
+    margin-top:40px;
+}
+
+.footer-top{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    padding:40px;
+}
+
+.footer-top h3{
+    margin-bottom:15px;
+}
+
+.footer-top p{
+    margin:8px 0;
+    color:#ddd;
+    cursor:pointer;
+}
+
+.footer-bottom{
+    background:#0f1111;
+    text-align:center;
+    padding:20px;
+}
+
+/* DARK MODE */
+
+.dark{
+    background:#111;
+    color:white;
+}
+
+.dark .card,
+.dark .service-box{
+    background:#222;
+    color:white;
+}
+
+.dark .navbar{
+    background:black;
+}
+
+.dark .header{
+    background:black;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.header{
+    flex-direction:column;
+    gap:10px;
+}
+
+.searchbar{
+    width:100%;
+}
+
+.slider{
+    height:250px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<img class="logo"
+src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+
+<div class="location">
+📍 Delivering to Mumbai 400001
+</div>
+
+<div class="searchbar">
+
+<select>
+<option>All</option>
+<option>Mobiles</option>
+<option>Fashion</option>
+<option>Electronics</option>
+<option>Books</option>
+</select>
+
+<input type="text"
+id="searchInput"
+placeholder="Search Amazon.in">
+
+<button onclick="searchProducts()">🔍</button>
+
+</div>
+
+<div class="right">
+
+<button class="darkbtn"
+onclick="darkMode()">
+Dark Mode
+</button>
+
+<div class="cart">
+🛒
+<span id="cartCount">0</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<p>All</p>
+<p>Today's Deals</p>
+<p>Best Sellers</p>
+<p>Mobiles</p>
+<p>Electronics</p>
+<p>Fashion</p>
+<p>Prime</p>
+<p>Home</p>
+<p>Kitchen</p>
+<p>Books</p>
+<p>Gaming</p>
+
+</div>
+
+<!-- SLIDER -->
+
+<div class="slider">
+
+<img id="sliderImage"
+src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+
+</div>
+
+<!-- OFFER -->
+
+<div class="offer-banner">
+
+<h1>Big Summer Sale</h1>
+
+<h2>Up to 70% OFF on Electronics & Fashion</h2>
+
+<p>Limited Time Offer</p>
+
+</div>
+
+<!-- PRODUCTS -->
+
+<h1 class="section-title">Top Deals For You</h1>
+
+<div class="products" id="productContainer">
+
+<!-- PRODUCT 1 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+
+<div class="card-content">
+
+<div class="offer">40% OFF</div>
+
+<h2>Nike Running Shoes</h2>
+
+<p class="rating">★★★★☆</p>
+
+<p class="price">₹2,999
+<span class="oldprice">₹5,999</span>
+</p>
+
+<button onclick="addToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 2 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
+
+<div class="card-content">
+
+<div class="offer">55% OFF</div>
+
+<h2>Wireless Headphones</h2>
+
+<p class="rating">★★★★★</p>
+
+<p class="price">₹1,499
+<span class="oldprice">₹3,999</span>
+</p>
+
+<button onclick="addToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 3 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
+
+<div class="card-content">
+
+<div class="offer">20% OFF</div>
+
+<h2>Gaming Laptop</h2>
+
+<p class="rating">★★★★★</p>
+
+<p class="price">₹54,999
+<span class="oldprice">₹69,999</span>
+</p>
+
+<button onclick="addToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 4 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
+
+<div class="card-content">
+
+<div class="offer">30% OFF</div>
+
+<h2>Men T-Shirt</h2>
+
+<p class="rating">★★★★☆</p>
+
+<p class="price">₹799
+<span class="oldprice">₹1,299</span>
+</p>
+
+<button onclick="addToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 5 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+
+<div class="card-content">
+
+<div class="offer">50% OFF</div>
+
+<h2>Smart Watch</h2>
+
+<p class="rating">★★★★★</p>
+
+<p class="price">₹2,199
+<span class="oldprice">₹4,999</span>
+</p>
+
+<button onclick="addToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 6 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad">
+
+<div class="card-content">
+
+<div class="offer">35% OFF</div>
+
+<h2>Luxury Perfume</h2>
+
+<p class="rating">★★★★☆</p>
+
+<p class="price">₹999
+<span class="oldprice">₹1,899</span>
+</p>
+
+<button onclick="addToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 7 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
+
+<div class="card-content">
+
+<div class="offer">60% OFF</div>
+
+<h2>Women Fashion</h2>
+
+<p class="rating">★★★★★</p>
+
+<p class="price">₹1,299
+<span class="oldprice">₹3,999</span>
+</p>
+
+<button onclick="addToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 8 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8">
+
+<div class="card-content">
+
+<div class="offer">25% OFF</div>
+
+<h2>Apple MacBook</h2>
+
+<p class="rating">★★★★★</p>
+
+<p class="price">₹89,999
+<span class="oldprice">₹1,09,999</span>
+</p>
+
+<button onclick="addToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SERVICES -->
+
+<h1 class="section-title">Why Shop With Us?</h1>
+
+<div class="services">
+
+<div class="service-box">
+
+<h3>🚚 Fast Delivery</h3>
+
+<p>Get products delivered within 24 hours.</p>
+
+</div>
+
+<div class="service-box">
+
+<h3>🔒 Secure Payment</h3>
+
+<p>100% secure online payment system.</p>
+
+</div>
+
+<div class="service-box">
+
+<h3>💰 Best Prices</h3>
+
+<p>Best deals and offers every day.</p>
+
+</div>
+
+<div class="service-box">
+
+<h3>📞 24/7 Support</h3>
+
+<p>Customer support anytime.</p>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<div class="footer-top">
+
+<div>
+<h3>Get to Know Us</h3>
+<p>About Us</p>
+<p>Careers</p>
+<p>Press Releases</p>
+<p>Amazon Science</p>
+</div>
+
+<div>
+<h3>Connect With Us</h3>
+<p>Facebook</p>
+<p>Instagram</p>
+<p>Twitter</p>
+</div>
+
+<div>
+<h3>Make Money</h3>
+<p>Sell on Amazon</p>
+<p>Affiliate Program</p>
+<p>Advertise Products</p>
+</div>
+
+<div>
+<h3>Help</h3>
+<p>Your Account</p>
+<p>Returns Centre</p>
+<p>Customer Support</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>© 2026 Amazon Clone | Designed with HTML CSS JavaScript</p>
+
+</div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* CART */
+
+let cart = 0;
+
+function addToCart(){
+
+cart++;
+
+document.getElementById("cartCount").innerHTML = cart;
+
+}
+
+/* DARK MODE */
+
+function darkMode(){
+
+document.body.classList.toggle("dark");
+
+}
+
+/* IMAGE SLIDER */
+
+let images = [
+
+"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+
+"https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+
+"https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+
+"https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+
+];
+
+let index = 0;
+
+function changeImage(){
+
+document.getElementById("sliderImage").src = images[index];
+
+index++;
+
+if(index >= images.length){
+
+index = 0;
+
+}
+
+}
+
+setInterval(changeImage,3000);
+
+/* SEARCH */
+
+function searchProducts(){
+
+let input = document
+.getElementById("searchInput")
+.value
+.toLowerCase();
+
+let cards = document.getElementsByClassName("card");
+
+for(let i=0;i<cards.length;i++){
+
+let title = cards[i]
+.getElementsByTagName("h2")[0]
+.innerHTML
+.toLowerCase();
+
+if(title.includes(input)){
+
+cards[i].style.display = "block";
+
+}
+
+else{
+
+cards[i].style.display = "none";
+
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
