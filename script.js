@@ -1,38 +1,25 @@
+function findFactorial() {
 
-var num=10;
-console.log(num);
-console.log(typeof(num));
-num=false;
-console.log(typeof(num));
-num="Aprajita mall";
-console.log(num);
-console.log(typeof(num));
-num=null;
-console.log(num);
-console.log(typeof(num));
-num=undefined;
-console.log(num);
-console.log(typeof(num));
-//function
-var sayHello=function(){
-    alert("hello world")
-}
-//array
-var numberArray=[1,2,3];
-var animals=new Array("cat","dog","lion");
-//object
-var person={
-    name:"aprajita mall",
-    age:19,
-    tilte:"student of CSE11",
-}
-const sym1=Symbol(4)
-console.log(sym1);
-const sym2=Symbol(4);
-console.log(sym2);
-if(sym1==sym2){
- console.log("true");  
+    let num = Number(
+        document.getElementById("num").value
+    );
 
-}else{
-    console.log("false");  
+    let fact = 1;
+
+    if (num < 0) {
+
+        document.getElementById("result").innerHTML =
+            "Factorial is not defined for negative numbers";
+
+        return;
+    }
+
+    for (let i = 1; i <= num; i++) {
+
+        fact = fact * i;
+
+    }
+
+    document.getElementById("result").innerHTML =
+        "Factorial of " + num + " = " + fact;
 }
